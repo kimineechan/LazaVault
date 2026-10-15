@@ -46,7 +46,7 @@
     "typescript": "5.9.3",
     "vite": "8.2.2",
     "vitest": "4.1.11",
-    "wait-on": "9.1.0"
+    "wait-on": "9.5.1"
   },
   "build": {
     "appId": "org.lazavault.app",
