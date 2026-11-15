@@ -4,9 +4,11 @@ LazaVault is a local desktop password-health and rotation assistant. It opens a 
 
 It does **not** upload the password file and it does **not** claim to change every password automatically. Websites have different forms, CAPTCHAs, authentication steps, MFA challenges, recovery flows, and password rules. LazaVault is a rotation assistant: the user stays in control of every website interaction.
 
+![LazaVault showing the password health of a sample export: critical findings, reused and weak passwords, and the accounts to deal with first](docs/screenshots/overview.png)
+
 > Status: security-focused MVP. Please read [THREAT_MODEL.md](THREAT_MODEL.md) before using real credentials.
 
-The desktop interface uses the operating system font, a light theme, and account tables with search, filtering, and risk sorting. No font, stylesheet, analytics event, or imported credential is fetched by the renderer. There is no demo mode or bundled sample vault.
+The desktop interface uses the operating system font, a dark theme with rounded controls, and account tables with search, filtering, and risk sorting. On Windows 11 the window is see through over a blur of what is behind it; on Windows 10 it is solid black. No font, stylesheet, analytics event, or imported credential is fetched by the renderer. There is no demo mode or bundled sample vault.
 
 ## What works
 

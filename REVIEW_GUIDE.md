@@ -1,12 +1,12 @@
-# Review LazaVault 0.2.0
+# Review LazaVault 0.3.0
 
 LazaVault is the redesigned desktop password review application. It uses the system font and has no demo vault.
 
 ## Launch on Windows
 
-Open `LazaVault-Portable-0.2.0-x64.exe`. Node.js and npm are not required for the portable build.
+Open `LazaVault-Portable-0.3.0-x64.exe`. Node.js and npm are not required for the portable build.
 
-If the portable wrapper does not launch, extract `LazaVault-Windows-Unpacked-0.2.0-x64.zip`, keep every included file together, and open `LazaVault.exe` inside the extracted folder.
+If the portable wrapper does not launch, extract `LazaVault-Windows-Unpacked-0.3.0-x64.zip`, keep every included file together, and open `LazaVault.exe` inside the extracted folder.
 
 The review builds are unsigned. Windows may show an unknown publisher warning. Do not disable Windows security globally.
 
@@ -43,4 +43,4 @@ Imported passwords, staged replacements, and checklist progress remain in the cu
 
 ## GitHub
 
-Create a new empty public repository named `lazavault` and follow [GITHUB_RELEASE.md](GITHUB_RELEASE.md). The source ZIP contains the app and repository files without old Git history. The included Windows release workflow builds the installer, portable executable, unpacked ZIP, and checksums on a Windows runner when you publish `v0.2.0`.
+Create a new empty public repository named `lazavault` and follow [GITHUB_RELEASE.md](GITHUB_RELEASE.md). The source ZIP contains the app and repository files without old Git history. The included Windows release workflow builds the installer, portable executable, unpacked ZIP, and checksums on a Windows runner when you publish a version tag such as `v0.3.0`.

@@ -4,6 +4,7 @@ import {
   clipboard,
   dialog,
   ipcMain,
+  nativeTheme,
   net,
   session,
   shell,
@@ -11,6 +12,7 @@ import {
   type OpenDialogOptions,
   type SaveDialogOptions,
 } from "electron";
+import { release } from "node:os";
 import { basename, join } from "node:path";
 import { chmod, readFile, stat, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
@@ -24,6 +26,14 @@ import { VaultSession } from "./vault";
 const MAX_IMPORT_BYTES = 25 * 1024 * 1024;
 const isDevelopment = Boolean(process.env.VITE_DEV_SERVER_URL);
 const DEFAULT_ZOOM_FACTOR = 1.08;
+
+// The window is black. Windows 11 from its 2022 update can blur what is
+// behind a window and let it show through, the frosted look; there the
+// page is made a fifth see-through. Earlier versions of Windows cannot do
+// this for a window that keeps its frame, so there the window is solid.
+const WINDOW_COLOR = "#0b0b0b";
+const FROSTED = process.platform === "win32" && Number(release().split(".")[2]) >= 22621;
+const FROSTED_STYLE = ":root { --sheet: rgba(11, 11, 11, .8); }";
 
 app.disableHardwareAcceleration();
 
@@ -88,13 +98,16 @@ async function secureWrite(filePath: string, contents: string): Promise<void> {
 }
 
 async function createWindow(): Promise<BrowserWindow> {
+  // The frame, the menus and the file dialogs of Windows follow the dark look.
+  nativeTheme.themeSource = "dark";
   const window = new BrowserWindow({
     width: 1480,
     height: 940,
     minWidth: 1160,
     minHeight: 760,
     show: false,
-    backgroundColor: "#f7f8fa",
+    backgroundColor: FROSTED ? "#00000000" : WINDOW_COLOR,
+    ...(FROSTED ? { backgroundMaterial: "acrylic" as const } : {}),
     title: "LazaVault",
     webPreferences: {
       preload: join(__dirname, "preload.cjs"),
@@ -128,6 +141,7 @@ async function createWindow(): Promise<BrowserWindow> {
       await window.loadFile(join(__dirname, "../dist/index.html"));
     }
     window.webContents.setZoomFactor(DEFAULT_ZOOM_FACTOR);
+    if (FROSTED) await window.webContents.insertCSS(FROSTED_STYLE);
     window.show();
     return window;
   } catch (error) {

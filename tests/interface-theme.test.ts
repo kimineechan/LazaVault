@@ -17,10 +17,24 @@ describe("interface theme", () => {
 
   it("contains the professional desktop interface", () => {
     expect(styles).toContain("/* Professional desktop interface */");
-    expect(styles).toContain("color-scheme: light");
-    expect(styles).toContain("--accent: #2457d6");
-    expect(styles).toContain("--sidebar: #f1f3f6");
+    expect(styles).toContain("color-scheme: dark");
+    expect(styles).toContain("--sheet: #0b0b0b");
+    expect(styles).toContain("--accent: #f3f3f3");
+    expect(styles).toContain("--on-accent: #0b0b0b");
+    expect(styles).toContain("--sidebar: rgba(0, 0, 0, .28)");
     expect(styles).not.toContain("text-shadow");
+  });
+
+  it("is dark, with a dark frame, and see-through only where Windows can blur", () => {
+    expect(mainSource).toContain('nativeTheme.themeSource = "dark"');
+    expect(mainSource).toContain('const WINDOW_COLOR = "#0b0b0b"');
+    expect(mainSource).toContain('backgroundMaterial: "acrylic"');
+    expect(mainSource).toContain(">= 22621");
+    // No light surface is left behind in the stylesheet.
+    expect(styles).not.toMatch(/background:\s*#(?:fff|f[0-9a-f]{5}|e[0-9a-f]{5})\b/i);
+    // The frame of Windows is kept, so the window can still be resized and maximised.
+    expect(mainSource).not.toContain("frame: false");
+    expect(mainSource).not.toContain("transparent: true");
   });
 
   it("does not ship a demo vault", () => {

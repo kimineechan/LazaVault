@@ -51,7 +51,7 @@ export class PwnedPasswordsClient {
           {
             headers: {
               "Add-Padding": "true",
-              "User-Agent": "LazaVault/0.2.0 (local desktop password health assistant)",
+              "User-Agent": "LazaVault/0.3.0 (local desktop password health assistant)",
             },
             signal: controller.signal,
           },

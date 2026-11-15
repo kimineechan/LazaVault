@@ -367,7 +367,7 @@ function Sidebar({
         <LogOut size={17} /> Close session
       </button>
       <p className="version">
-        v0.2.0 <span>MIT license</span>
+        v0.3.0 <span>MIT license</span>
       </p>
     </aside>
   );
