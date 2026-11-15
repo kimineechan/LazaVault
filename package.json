@@ -39,12 +39,12 @@
     "@vitejs/plugin-react": "6.1.0",
     "concurrently": "10.0.6",
     "cross-env": "10.1.0",
-    "electron": "44.0.0",
+    "electron": "44.11.3",
     "electron-builder": "26.15.3",
     "esbuild": "0.28.2",
     "jsdom": "30.0.1",
     "typescript": "5.9.3",
-    "vite": "8.2.2",
+    "vite": "8.3.8",
     "vitest": "4.1.11",
     "wait-on": "9.1.0"
   },
@@ -65,7 +65,10 @@
     },
     "mac": {
       "category": "public.app-category.utilities",
-      "target": ["dmg", "zip"],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "hardenedRuntime": true,
       "gatekeeperAssess": false
     },
@@ -75,11 +78,15 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         },
         {
           "target": "portable",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ]
     },
@@ -95,7 +102,10 @@
       "artifactName": "LazaVault-Portable-${version}-${arch}.${ext}"
     },
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "category": "Utility"
     }
   }

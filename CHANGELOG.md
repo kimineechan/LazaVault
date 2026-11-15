@@ -8,6 +8,7 @@ A dark interface, in the style of LazaReplay, LazaScrub and LazaBinder. What Laz
 * The window frame, the menus of lists and the file dialogs of Windows follow the dark look.
 * On Windows 11 from its 2022 update, what is behind the window shows through, blurred. On Windows 10 the window is solid, because that blur is not available there to a window that keeps its frame.
 * Risk labels and findings recoloured to stay readable on black.
+* Electron updated to 44.11.3 and the build tools updated, which clears the high severity findings of the dependency audit.
 
 ## 0.2.0
 
